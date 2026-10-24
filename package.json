@@ -1,0 +1,10 @@
+{
+  "name": "eleccion-vehiculo-upme",
+  "version": "1.0.0",
+  "description": "Guía interactiva, comparador de fichas técnicas, elegibilidad UPME y evaluador en pareja de vehículos híbridos en Colombia",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "dev": "npx --yes serve -l 4173 ."
+  }
+}

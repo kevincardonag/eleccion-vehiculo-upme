@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Amor, elijamos nuestra próxima camioneta 💛</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER & STEPPER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-top">
+        <div class="brand-title">
+          <div class="brand-logo" aria-hidden="true">💛</div>
+          <div>
+            <h1>Nuestra Próxima Camioneta</h1>
+            <p class="header-subtitle">Un proyecto de los dos • Cali, Colombia</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-glass" onclick="window.openVisitsModal()" title="Ver concesionarios y camionetas visitadas">
+            <span>📍</span> <span class="action-label">Visitas</span> <span id="headerVisitedBadge" class="mini-counter-pill">0</span>
+          </button>
+          <button class="btn btn-glass" onclick="window.openBrandDirectory()" title="Ver qué camioneta aplica por marca">
+            <span>🏷️</span> <span class="action-label">Marcas</span>
+          </button>
+          <button class="btn btn-glass" id="btnAddVehicle" title="Agregar otro vehículo a la lista">
+            <span>➕</span> <span class="action-label">Agregar</span>
+          </button>
+          <button class="btn btn-glass" id="btnShareWhatsapp" title="Copiar resumen para WhatsApp">
+            <span>📲</span> <span class="action-label">WhatsApp</span>
+          </button>
+          <button class="btn btn-glass" id="btnExportData" title="Guardar copia de seguridad">
+            <span>💾</span> <span class="action-label">Guardar</span>
+          </button>
+          <label class="btn btn-glass" style="cursor:pointer;" title="Cargar copia de seguridad">
+            <span>📂</span> <span class="action-label">Cargar</span>
+            <input type="file" id="inputImportData" accept=".json" style="display:none;" />
+          </label>
+        </div>
+      </div>
+
+      <!-- 6-STEP PROGRESS & NAVIGATION -->
+      <div class="stepper-wrapper">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBarFill" style="width: 16.6%;"></div>
+        </div>
+        <nav class="stepper-pills" id="stepperNav" aria-label="Pasos del recorrido">
+          <button class="step-pill active" data-step="1" onclick="window.goToStep(1)">
+            <span class="step-num">1</span>
+            <span>Bienvenida</span>
+          </button>
+          <button class="step-pill" data-step="2" onclick="window.goToStep(2)">
+            <span class="step-num">2</span>
+            <span>Híbridos</span>
+          </button>
+          <button class="step-pill" data-step="3" onclick="window.goToStep(3)">
+            <span class="step-num">3</span>
+            <span>UPME y Cali</span>
+          </button>
+          <button class="step-pill" data-step="4" onclick="window.goToStep(4)">
+            <span class="step-num">4</span>
+            <span>Mini-Guía</span>
+          </button>
+          <button class="step-pill" data-step="5" onclick="window.goToStep(5)">
+            <span class="step-num">5</span>
+            <span>Camionetas</span>
+          </button>
+          <button class="step-pill" data-step="6" onclick="window.goToStep(6)">
+            <span class="step-num">6</span>
+            <span>Nuestro Top 3</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="main-container">
+
+    <!-- ==================== PASO 1: BIENVENIDA AMOROSA ==================== -->
+    <section id="step-1" class="step-screen active">
+      <div class="welcome-card">
+        <span class="step-eyebrow welcome-eyebrow">💛 Un nuevo sueño juntos • Paso 1 de 6</span>
+        <h2 class="welcome-heading">
+          Amor, vamos a elegir juntos nuestra próxima camioneta ✨
+        </h2>
+        <p class="welcome-love-message">
+          Preparé este recorrido con mucho cariño para ti, pensando en nuestros paseos, nuestra tranquilidad y todos los momentos lindos que vamos a vivir en el camino. Quiero que lo veamos con calma, de forma corta y sencilla, para que tomemos la mejor decisión y elijamos la camioneta que nos enamore a los dos.
+        </p>
+
+        <div class="welcome-pillars">
+          <div class="pillar-card">
+            <div class="pillar-icon">💰</div>
+            <h3>1. Nuestro Presupuesto</h3>
+            <p>
+              Buscamos nuestra opción ideal entre <strong>$130 y $150 millones</strong> (y dejamos algunas de hasta <strong>$170 millones</strong> solo para conocer qué más ofrecen).
+            </p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🏛️</div>
+            <h3>2. Compra Inteligente (UPME)</h3>
+            <p>
+              Veremos en 2 minutos por qué algunos "híbridos" sí nos devuelven millones en beneficios (<strong>UPME</strong> y descuentos en Cali) y otros no.
+            </p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">💑</div>
+            <h3>3. Lo que nos Gusta a Ambos</h3>
+            <p>
+              Miraremos cada camioneta una por una para ponerle nuestra calificación y anotar qué nos encanta y qué dudas tenemos.
+            </p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-mobile-full" onclick="window.goToStep(2)">
+          Empezar nuestro recorrido juntos →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== PASO 2: DIFERENCIA ENTRE HÍBRIDOS (1 A LA VEZ) ==================== -->
+    <section id="step-2" class="step-screen">
+      <div class="step-header">
+        <span class="step-eyebrow">Paso 2 de 6 • Corto y Sencillo</span>
+        <h2>¿Cuál es la diferencia entre los tipos de Híbridos?</h2>
+        <p>
+          Toca cada botón para ver cómo funciona en palabras simples y si aplica o no al beneficio de la <strong>UPME</strong>.
+        </p>
+      </div>
+
+      <!-- Selector 1 a 1 de los 4 tipos de híbridos -->
+      <div class="sub-selector-tabs hybrid-tabs-grid" id="hybridSelectorTabs"></div>
+
+      <!-- Tarjeta Protagonista (1 sola a la vez) -->
+      <div id="hybridSpotlightContainer"></div>
+
+      <div class="step-footer-nav">
+        <button class="btn btn-outline btn-mobile-full" onclick="window.goToStep(1)">
+          ← Volver al inicio
+        </button>
+        <button class="btn btn-primary btn-lg btn-mobile-full" onclick="window.goToStep(3)">
+          Siguiente: Beneficios UPME y Cali →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== PASO 3: UPME Y BENEFICIOS EN CALI ==================== -->
+    <section id="step-3" class="step-screen">
+      <div class="step-header">
+        <span class="step-eyebrow">Paso 3 de 6 • Por qué vale la pena</span>
+        <h2>¿Qué ganamos con la UPME y viviendo en Cali?</h2>
+        <p>
+          Al elegir un híbrido real (<strong>HEV, e-POWER o Enchufable PHEV</strong>) aprovechamos tres grandes ventajas:
+        </p>
+      </div>
+
+      <div class="benefits-3-grid">
+        <div class="benefit-card" style="border-top: 4px solid var(--success);">
+          <span class="badge badge-success" style="align-self:flex-start;">1. Beneficio Nacional (DIAN)</span>
+          <h3>🏛️ Certificado UPME: 50% en Renta</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Con el certificado de la UPME podemos descontar hasta el <strong>50% del valor del vehículo</strong> de nuestra base de Declaración de Renta.
+          </p>
+          <div style="background:var(--success-bg); padding:0.7rem; border-radius:10px; font-size:0.82rem; color:#065f46; margin-top:auto;">
+            <strong>Por eso descartamos Mazda y Suzuki:</strong> sus híbridos son "ligeros" (MHEV) y la UPME los excluyó de este beneficio.
+          </div>
+        </div>
+
+        <div class="benefit-card" style="border-top: 4px solid var(--info);">
+          <span class="badge badge-info" style="align-self:flex-start;">2. Beneficio Valle del Cauca</span>
+          <h3>🌴 60% Dto. en Impuesto por 5 Años</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Al matricular la camioneta por primera vez en <strong>Cali / Valle del Cauca</strong>, tenemos <strong>60% de descuento en el impuesto vehicular durante 5 años</strong>.
+          </p>
+          <div style="background:var(--info-bg); padding:0.7rem; border-radius:10px; font-size:0.82rem; color:#075985; margin-top:auto;">
+            Adicional a que el impuesto base de un híbrido ya es más económico por ley.
+          </div>
+        </div>
+
+        <div class="benefit-card" style="border-top: 4px solid var(--purple);">
+          <span class="badge badge-purple" style="align-self:flex-start;">3. Comodidad en Cali</span>
+          <h3>❄️ Sin Pico y Placa + Aire Frío</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Estamos <strong>exentos de Pico y Placa en Cali</strong>. Y con el calor de Cali: el aire acondicionado es eléctrico, así que <strong>enfría perfecto en los semáforos con el motor apagado</strong>.
+          </p>
+          <div style="background:var(--purple-bg); padding:0.7rem; border-radius:10px; font-size:0.82rem; color:#5b21b6; margin-top:auto;">
+            Bajando de Km 18 o Dapa hacia Cali, la frenada recarga la batería gratis.
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón opcional para ver simulador sin saturar -->
+      <div style="text-align:center; margin: 1.25rem 0;">
+        <button class="btn btn-outline btn-mobile-full" id="btnToggleCalculator">
+          🧮 ¿Quieren simular el ahorro en pesos? (Opcional)
+        </button>
+      </div>
+
+      <div class="collapsible-calc-box" id="calcBoxContainer">
+        <h3 style="font-size:1.05rem; font-weight:800; color:#065f46;">
+          Simulador de Ahorro (UPME + Valle del Cauca + Gasolina en Cali)
+        </h3>
+        <div class="sim-grid">
+          <div class="sim-controls">
+            <div class="sim-control-group">
+              <label>
+                <span>Precio del vehículo:</span>
+                <strong id="simPriceLabel">$142.000.000 COP</strong>
+              </label>
+              <input type="range" id="simPriceInput" min="130000000" max="180000000" step="1000000" value="142000000" />
+            </div>
+            <div class="sim-control-group">
+              <label>
+                <span>Kilómetros al mes:</span>
+                <strong id="simKmLabel">1.200 km / mes</strong>
+              </label>
+              <input type="range" id="simKmInput" min="400" max="3000" step="100" value="1200" />
+            </div>
+            <div class="sim-control-group">
+              <label>
+                <span>Tasa efectiva aprox. de Renta:</span>
+                <strong id="simTaxRateLabel">25%</strong>
+              </label>
+              <input type="range" id="simTaxRateInput" min="10" max="35" step="1" value="25" />
+            </div>
+          </div>
+
+          <div class="sim-results">
+            <div class="sim-stat-card">
+              <span class="stat-label">Base Deducible Renta (50% UPME)</span>
+              <div class="stat-value" id="simDeductionBase">$71.000.000</div>
+              <span class="stat-note">Cupo para descontar en renta</span>
+            </div>
+            <div class="sim-stat-card">
+              <span class="stat-label">Ahorro Real en Renta</span>
+              <div class="stat-value" id="simTaxCashSaved">$17.750.000</div>
+              <span class="stat-note">Dinero que no pagas a la DIAN</span>
+            </div>
+            <div class="sim-stat-card">
+              <span class="stat-label">Ahorro 5 Años Impuesto Valle</span>
+              <div class="stat-value" id="simValleTaxSaved">$4.260.000</div>
+              <span class="stat-note">60% dto. matriculando en el Valle</span>
+            </div>
+            <div class="sim-stat-card">
+              <span class="stat-label">Ahorro Anual Gasolina</span>
+              <div class="stat-value" id="simFuelSaved">$4.460.000 / año</div>
+              <span class="stat-note">De ~36 km/gal a ~68 km/gal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-footer-nav">
+        <button class="btn btn-outline btn-mobile-full" onclick="window.goToStep(2)">
+          ← Volver a Tipos de Híbridos
+        </button>
+        <button class="btn btn-primary btn-lg btn-mobile-full" onclick="window.goToStep(4)">
+          Siguiente: 3 Conceptos Rápidos →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== PASO 4: MINI-GUÍA RÁPIDA (1 TEMA A LA VEZ) ==================== -->
+    <section id="step-4" class="step-screen">
+      <div class="step-header">
+        <span class="step-eyebrow">Paso 4 de 6 • Diccionario de 1 Minuto</span>
+        <h2>3 Conceptos Clave Antes de Ver los Carros</h2>
+        <p>
+          Así entenderemos fácil qué significan el motor, la caja y la seguridad en cada ficha.
+        </p>
+      </div>
+
+      <div class="sub-selector-tabs mini-guide-tabs-grid" id="miniGuideTabs">
+        <button class="sub-tab-btn active" onclick="window.selectMiniGuideTopic(0)">
+          🏔️ 1. Motor Turbo vs. Aspirado
+        </button>
+        <button class="sub-tab-btn" onclick="window.selectMiniGuideTopic(1)">
+          🕹️ 2. Caja de Cambios
+        </button>
+        <button class="sub-tab-btn" onclick="window.selectMiniGuideTopic(2)">
+          🛡️ 3. Seguridad ADAS
+        </button>
+      </div>
+
+      <div id="miniGuideSpotlight"></div>
+
+      <div class="step-footer-nav">
+        <button class="btn btn-outline btn-mobile-full" onclick="window.goToStep(3)">
+          ← Volver a Beneficios UPME y Cali
+        </button>
+        <button class="btn btn-primary btn-lg btn-mobile-full" onclick="window.goToStep(5)">
+          ¡Ir a Ver y Calificar las Camionetas! →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== PASO 5: LAS CAMIONETAS CANDIDATAS (MAPA DE MARCAS + CARRUSEL 1 A 1) ==================== -->
+    <section id="step-5" class="step-screen">
+      <div class="step-header" style="margin-bottom: 1rem;">
+        <span class="step-eyebrow">Paso 5 de 6 • Nuestras Candidatas por Marca y Presupuesto</span>
+        <h2>¿Qué Camioneta nos Aplica en Cada Marca?</h2>
+        <p>
+          Toca cualquier marca abajo para ir directamente a ver la foto, ficha y calificación de su camioneta, o recórrelas una por una en el carrusel.
+        </p>
+      </div>
+
+      <!-- RESUMEN DE VISITAS A CONCESIONARIOS EN CALI -->
+      <div class="visits-summary-banner" id="visitsSummaryBanner">
+        <div class="visits-banner-left">
+          <span class="visits-icon-badge">📍</span>
+          <div>
+            <strong style="font-size:0.92rem; display:block;" id="visitsProgressTitle">
+              Ruta de Concesionarios en Cali: 0 visitadas
+            </strong>
+            <span style="font-size:0.8rem; color:var(--text-muted);" id="visitsProgressSub">
+              Marca con un check ✅ las marcas y camionetas que ya fueron a ver juntos
+            </span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.openVisitsModal()">
+          📋 Ver / Marcar Concesionarios Visitados
+        </button>
+      </div>
+
+      <!-- SECCIÓN DE ACCESO RÁPIDO POR MARCA -->
+      <div class="brand-directory-box" id="brandDirectorySection">
+        <div class="brand-dir-header" onclick="window.toggleBrandDirectory()">
+          <div>
+            <h3 style="font-size:1rem; font-weight:800; display:flex; align-items:center; gap:0.45rem;">
+              🏷️ Mapa por Marcas y Concesionarios (Toca para ir al carro o marcar visita 📍)
+            </h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">
+              Haz clic en el nombre para ver la camioneta o en el botón <strong>📍 Visitado</strong> para marcar que ya fueron
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline btn-sm" id="btnToggleBrands">
+            Ocultar marcas ▲
+          </button>
+        </div>
+        <div class="brand-cards-grid" id="brandDirectoryGrid"></div>
+      </div>
+
+      <!-- Barra de Rondas de Presupuesto y Selector Carrusel / Cuadrícula -->
+      <div class="candidates-toolbar" id="candidatesToolbarAnchor">
+        <div class="round-pills" id="roundFilterPills">
+          <button class="round-pill active" data-round="IDEAL_130_150">
+            🟢 $130M–$150M (6)
+          </button>
+          <button class="round-pill" data-round="STRETCH_150_170">
+            🟡 $150M–$170M (3)
+          </button>
+          <button class="round-pill" data-round="VISITED_ONLY">
+            📍 Ya Visitadas (0)
+          </button>
+          <button class="round-pill" data-round="PENDING_VISIT">
+            ⏳ Por Visitar (9)
+          </button>
+          <button class="round-pill" data-round="OVER_170_REF">
+            🟠 Enchufables / >$170M (3)
+          </button>
+          <button class="round-pill" data-round="MHEV_DESCARTADO">
+            ❌ Descartadas (2)
+          </button>
+          <button class="round-pill" data-round="ALL">
+            📋 Todas (14)
+          </button>
+        </div>
+
+        <div class="view-mode-toggle">
+          <button class="view-mode-btn active" id="btnModeGrid" onclick="window.setViewMode('GRID')">
+            ⊞ Cuadrícula
+          </button>
+          <button class="view-mode-btn" id="btnModeCarousel" onclick="window.setViewMode('CAROUSEL')">
+            🎴 1 por 1
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTENEDOR MODO CARRUSEL (1 CAMIONETA A LA VEZ) -->
+      <div id="carouselViewContainer" style="display:none;">
+        <div class="carousel-nav-header">
+          <button class="btn btn-outline btn-sm carousel-step-btn" id="btnPrevCar" onclick="window.prevCarouselCar()">
+            ← Anterior
+          </button>
+          <div class="carousel-center-info">
+            <div style="font-size:0.78rem; font-weight:800; color:var(--primary);" id="carouselCounterLabel">
+              Camioneta 1 de 6
+            </div>
+            <div class="carousel-dots" id="carouselDotsContainer"></div>
+          </div>
+          <button class="btn btn-primary btn-sm carousel-step-btn" id="btnNextCar" onclick="window.nextCarouselCar()">
+            Siguiente →
+          </button>
+        </div>
+
+        <!-- Ficha Grande Protagonista -->
+        <div id="carouselSingleCardStage"></div>
+      </div>
+
+      <!-- CONTENEDOR MODO CUADRÍCULA (POR DEFECTO) -->
+      <div id="gridViewContainer">
+        <div id="vehiclesGrid" class="vehicles-grid"></div>
+      </div>
+
+      <div class="step-footer-nav">
+        <button class="btn btn-outline btn-mobile-full" onclick="window.goToStep(4)">
+          ← Volver a Mini-Guía
+        </button>
+        <button class="btn btn-accent btn-lg btn-mobile-full" onclick="window.goToStep(6)">
+          Ver Nuestro Podio Final y Comparativa →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== PASO 6: PODIO FINAL Y COMPARADOR ==================== -->
+    <section id="step-6" class="step-screen">
+      <div class="step-header">
+        <span class="step-eyebrow">Paso 6 de 6 • Nuestra Decisión</span>
+        <h2>🏆 Nuestro Podio Final y Comparador</h2>
+        <p>
+          Según las estrellas de los dos, estas son nuestras favoritas que sí aplican a la <strong>UPME</strong>.
+        </p>
+      </div>
+
+      <!-- TOP 3 PODIUM CARDS -->
+      <div id="podiumContainer" class="podium-grid"></div>
+
+      <!-- COMPARADOR DE 3 VEHÍCULOS -->
+      <div class="comparator-card-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+          <div>
+            <h3 style="font-size:1.15rem; font-weight:800;">⚖️ Comparativa Lado a Lado</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted);">Elige hasta 3 modelos para comparar sus datos y notas.</p>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; width:100%; justify-content:flex-start;">
+            <button class="btn btn-primary btn-sm" id="btnShareWhatsapp2">
+              📲 Enviar Resumen a WhatsApp
+            </button>
+            <button class="btn btn-outline btn-sm" id="btnResetDefaults">
+              🔄 Restaurar Notas
+            </button>
+          </div>
+        </div>
+
+        <div class="comparator-selectors">
+          <div class="comp-select-card">
+            <label for="compSelect1">🥇 Opción 1</label>
+            <select id="compSelect1" class="select-field"></select>
+          </div>
+          <div class="comp-select-card">
+            <label for="compSelect2">🥈 Opción 2</label>
+            <select id="compSelect2" class="select-field"></select>
+          </div>
+          <div class="comp-select-card">
+            <label for="compSelect3">🥉 Opción 3</label>
+            <select id="compSelect3" class="select-field"></select>
+          </div>
+        </div>
+
+        <div class="mobile-swipe-hint">👉 Desliza la tabla hacia los lados para comparar las 3 columnas</div>
+        <div class="comp-table-wrapper">
+          <table class="comp-table" id="comparatorTable"></table>
+        </div>
+      </div>
+
+      <div class="step-footer-nav">
+        <button class="btn btn-outline btn-mobile-full" onclick="window.goToStep(5)">
+          ← Volver a las Camionetas
+        </button>
+        <button class="btn btn-primary btn-mobile-full" onclick="window.goToStep(1)">
+          🏠 Volver al Inicio
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL BITÁCORA DE CONCESIONARIOS Y VISITAS EN CALI -->
+  <div class="modal-backdrop" id="visitsLogModal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close" onclick="window.closeVisitsModal()">✕</button>
+      <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:0.3rem;">📍 Nuestras Visitas a Concesionarios en Cali</h2>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:1rem;">
+        Marca qué camionetas y concesionarios ya visitaron, cuáles ya manejaron (Test Drive) y anota en qué sede de Cali los atendieron.
+      </p>
+      <div id="visitsModalListContainer" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+    </div>
+  </div>
+
+  <!-- MODAL AGREGAR NUEVO VEHÍCULO -->
+  <div class="modal-backdrop" id="addVehicleModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeAddModal">✕</button>
+      <h2 style="font-size:1.25rem; font-weight:800; margin-bottom:0.4rem;">➕ Agregar Otro Vehículo</h2>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.1rem;">
+        ¿Vieron otra opción en un concesionario de Cali? Agréguenla aquí.
+      </p>
+      <form id="formAddVehicle" class="add-vehicle-form">
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Marca *</label>
+          <input type="text" id="newBrand" class="input-field" style="width:100%" placeholder="Ej. Chery, Deepal, BYD..." required />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Modelo *</label>
+          <input type="text" id="newModel" class="input-field" style="width:100%" placeholder="Ej. S07 E-Max / Tiggo 7 PHEV" required />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Versión</label>
+          <input type="text" id="newTrim" class="input-field" style="width:100%" placeholder="Ej. Luxury" />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Precio en Cali (COP) *</label>
+          <input type="number" id="newPrice" class="input-field" style="width:100%" placeholder="145000000" required />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Tipo de Hibridación *</label>
+          <select id="newCategory" class="select-field" style="width:100%">
+            <option value="HEV">Híbrido Completo (HEV) - Sí UPME</option>
+            <option value="PHEV">Híbrido Enchufable (PHEV) - Sí UPME</option>
+            <option value="EPOWER">Rango Extendido (e-POWER) - Sí UPME</option>
+            <option value="MHEV_DESCARTADO">Híbrido Ligero (MHEV) - NO UPME</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Potencia aprox. (HP)</label>
+          <input type="number" id="newHp" class="input-field" style="width:100%" placeholder="190" value="180" />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Consumo aprox. (km/galón)</label>
+          <input type="number" id="newFuel" class="input-field" style="width:100%" placeholder="68" value="68" />
+        </div>
+        <div>
+          <label style="font-size:0.8rem; font-weight:700;">Baúl (Litros)</label>
+          <input type="number" id="newTrunk" class="input-field" style="width:100%" placeholder="450" value="450" />
+        </div>
+        <div class="form-full-col">
+          <label style="font-size:0.8rem; font-weight:700;">Resumen corto para nosotros</label>
+          <input type="text" id="newSummary" class="input-field" style="width:100%" placeholder="¿Qué hace especial a esta camioneta?" />
+        </div>
+        <div class="form-full-col">
+          <label style="font-size:0.8rem; font-weight:700;">URL de foto del carro (opcional)</label>
+          <input type="url" id="newImageUrl" class="input-field" style="width:100%" placeholder="https://ejemplo.com/foto-camioneta.jpg" />
+        </div>
+        <div class="form-full-col" style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:0.5rem;">
+          <button type="button" class="btn btn-outline" id="cancelAddModal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
